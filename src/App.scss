@@ -13,29 +13,57 @@
 
  .timelineWrapper {
   display: flex;
+  justify-content: center;
 
   .inputSection {
     display: flex;
     flex-direction: column;
+    margin-right: 25px;
 
     .inputRow {
       display: flex;
+      flex-direction: column;
+      margin-top: 25px;
 
       .yearInput {
-        width: 100px;
+        width: 65px;
       }
 
       .makeInput {
-        width: 200px;
+        width: 160px;
       }
 
       .marginRight {
         margin-right: 10px;
       }
+
+      .carModelRow {
+        display: flex;
+      }
+
+      .datepickerRow{
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+
+        .dateSelect {
+          width: 80px;
+          margin-left: 5px;
+        }
+
+        .marginRight {
+          margin-right: 10px;
+        }
+      }
+
+      .deleteButton {
+        margin-left: 10px;
+      }
     }
 
     .addButton {
       width: 100px;
+      margin-top: 25px;
     }
   }
  }

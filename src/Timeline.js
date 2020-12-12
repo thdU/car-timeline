@@ -1,9 +1,19 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const Timeline = () => {
+const Timeline = (props) => {
+
+  const carsCopy = JSON.parse(JSON.stringify(props.cars));
+  carsCopy.sort((a, b) => (a.startDate - b.startDate));
 
   const options = {
+    title: {
+      text: 'My Car History',
+      align: 'center',
+      style: {
+        fontSize: '18px',
+      }
+    },
     plotOptions: {
       bar: {
         horizontal: true,
@@ -16,7 +26,7 @@ const Timeline = () => {
     dataLabels: {
       enabled: true,
       formatter: function (val, opts) {
-        return 'test days';
+        return '';
       },
       style: {
         colors: ['#f3f4f5', '#fff']
@@ -26,7 +36,13 @@ const Timeline = () => {
       type: 'datetime'
     },
     yaxis: {
-      show: true
+      show: true,
+      maxWidth: '200px',
+      labels: {
+        style: {
+          fontSize: '16px',
+        }
+      }
     },
     grid: {
       row: {
@@ -36,50 +52,20 @@ const Timeline = () => {
     }
   };
 
+  const data = carsCopy.map(car => {
+    return {
+      x: `${car.year} ${car.make} ${car.model}`,
+      y: [
+        car.startDate,
+        car.endDate
+      ],
+      fillColor: '#008FFB'
+    }
+  });
+
   const series = [
     {
-      data: [
-        {
-          x: 'Analysis',
-          y: [
-            new Date('2019-02-27').getTime(),
-            new Date('2019-03-04').getTime()
-          ],
-          fillColor: '#008FFB'
-        },
-        {
-          x: 'Design',
-          y: [
-            new Date('2019-03-04').getTime(),
-            new Date('2019-03-08').getTime()
-          ],
-          fillColor: '#00E396'
-        },
-        {
-          x: 'Coding',
-          y: [
-            new Date('2019-03-07').getTime(),
-            new Date('2019-03-10').getTime()
-          ],
-          fillColor: '#775DD0'
-        },
-        {
-          x: 'Testing',
-          y: [
-            new Date('2019-03-08').getTime(),
-            new Date('2019-03-12').getTime()
-          ],
-          fillColor: '#FEB019'
-        },
-        {
-          x: 'Deployment',
-          y: [
-            new Date('2019-03-12').getTime(),
-            new Date('2019-03-17').getTime()
-          ],
-          fillColor: '#FF4560'
-        }
-      ]
+      data
     }
   ];
 
@@ -90,7 +76,7 @@ const Timeline = () => {
         options={options}
         series={series}
         type="rangeBar"
-        width={800}
+        width={900}
       />
     </div>
   )
