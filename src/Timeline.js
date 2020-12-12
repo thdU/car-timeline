@@ -36,6 +36,12 @@ const Timeline = (props) => {
     },
     xaxis: {
       type: 'datetime',
+      max: new Date().getTime(),
+      labels: {
+        style: {
+          fontSize: '14px',
+        }
+      }
     },
     yaxis: {
       show: true,
