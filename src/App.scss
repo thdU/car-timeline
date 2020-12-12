@@ -1,0 +1,42 @@
+.appWrapper {
+  padding: 20px;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .title {
+      font-size: 24px;
+    }
+  }
+
+ .timelineWrapper {
+  display: flex;
+
+  .inputSection {
+    display: flex;
+    flex-direction: column;
+
+    .inputRow {
+      display: flex;
+
+      .yearInput {
+        width: 100px;
+      }
+
+      .makeInput {
+        width: 200px;
+      }
+
+      .marginRight {
+        margin-right: 10px;
+      }
+    }
+
+    .addButton {
+      width: 100px;
+    }
+  }
+ }
+}
