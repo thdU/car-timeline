@@ -26,19 +26,21 @@ const Timeline = (props) => {
     dataLabels: {
       enabled: true,
       formatter: function (val, opts) {
+        // var label = opts.w.globals.labels[opts.dataPointIndex]
         return '';
       },
       style: {
-        colors: ['#f3f4f5', '#fff']
+        colors: ['#f3f4f5', '#fff'],
+        fontSize: '16px',
       }
     },
     xaxis: {
-      type: 'datetime'
+      type: 'datetime',
     },
     yaxis: {
       show: true,
-      maxWidth: '200px',
       labels: {
+        maxWidth: '200px',
         style: {
           fontSize: '16px',
         }
