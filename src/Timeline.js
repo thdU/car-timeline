@@ -1,5 +1,7 @@
 import React from 'react';
 import Chart from "react-apexcharts";
+import differenceInMonths from 'date-fns/differenceInMonths'
+import differenceInYears from 'date-fns/differenceInYears'
 
 const Timeline = (props) => {
 
@@ -25,8 +27,22 @@ const Timeline = (props) => {
     },
     dataLabels: {
       enabled: true,
+      textAnchor: 'middle',
       formatter: function (val, opts) {
         // var label = opts.w.globals.labels[opts.dataPointIndex]
+        if (val.length === 2 && val[1] > val[0]) {
+          const years = differenceInYears(val[1], val[0]);
+          const months = differenceInMonths(val[1], val[0]);
+
+          if (years === 0) {
+            return `${months} m`;
+          } else if (months % 12 === 0) {
+            return `${years} yr`;
+          }
+
+          return `${years} yr, ${months - 12 * years} m`;
+        }
+
         return '';
       },
       style: {
