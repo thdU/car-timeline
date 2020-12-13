@@ -27,29 +27,24 @@ const Timeline = (props) => {
       }
     },
     dataLabels: {
-      enabled: true,
-      textAnchor: 'middle',
-      formatter: function (val, opts) {
-        // var label = opts.w.globals.labels[opts.dataPointIndex]
-        if (val.length === 2 && val[1] > val[0]) {
-          const years = differenceInYears(val[1], val[0]);
-          const months = differenceInMonths(val[1], val[0]);
+      enabled: false,
+      // formatter: function (val, opts) {
+      //   // var label = opts.w.globals.labels[opts.dataPointIndex]
+      //   if (val.length === 2 && val[1] > val[0]) {
+      //     const years = differenceInYears(val[1], val[0]);
+      //     const months = differenceInMonths(val[1], val[0]);
 
-          if (years === 0) {
-            return `${months} m`;
-          } else if (months % 12 === 0) {
-            return `${years} yr`;
-          }
+      //     if (years === 0) {
+      //       return `${months} m`;
+      //     } else if (months % 12 === 0) {
+      //       return `${years} yr`;
+      //     }
 
-          return `${years} yr, ${months - 12 * years} m`;
-        }
+      //     return `${years} yr, ${months - 12 * years} m`;
+      //   }
 
-        return '';
-      },
-      style: {
-        colors: ['#f3f4f5', '#fff'],
-        fontSize: '16px',
-      }
+      //   return '';
+      // },
     },
     xaxis: {
       type: 'datetime',
@@ -63,17 +58,21 @@ const Timeline = (props) => {
     yaxis: {
       show: true,
       labels: {
+        align: 'center',
         maxWidth: '200px',
         style: {
           fontSize: '16px',
         },
-      }
+      },
     },
     grid: {
       row: {
         colors: ['#f3f4f5', '#fff'],
         opacity: 1
       }
+    },
+    tooltip: {
+      enabled: false,
     }
   };
 
