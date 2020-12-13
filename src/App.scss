@@ -42,6 +42,18 @@
         display: flex;
       }
 
+      .descInputRow {
+        margin-top: 10px;
+
+        .otherInfoLabel {
+          margin-right: 5px;
+        }
+
+        .descInput {
+          width: 325px;
+        }
+      }
+
       .datepickerRow{
         display: flex;
         align-items: center;

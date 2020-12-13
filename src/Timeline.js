@@ -2,6 +2,7 @@ import React from 'react';
 import Chart from "react-apexcharts";
 import differenceInMonths from 'date-fns/differenceInMonths'
 import differenceInYears from 'date-fns/differenceInYears'
+import './Timeline.scss';
 
 const Timeline = (props) => {
 
@@ -65,7 +66,7 @@ const Timeline = (props) => {
         maxWidth: '200px',
         style: {
           fontSize: '16px',
-        }
+        },
       }
     },
     grid: {
@@ -78,7 +79,7 @@ const Timeline = (props) => {
 
   const data = carsCopy.map(car => {
     return {
-      x: `${car.year} ${car.make} ${car.model}`,
+      x: [`${car.year} ${car.make} ${car.model}`, `${car.desc}`],
       y: [
         car.startDate,
         car.endDate

@@ -12,6 +12,7 @@ function App() {
     year: '',
     make: '',
     model: '',
+    desc: '',
     startDate: (new Date()).getTime(),
     endDate: (new Date()).getTime(),
   }]);
@@ -22,6 +23,7 @@ function App() {
       year: '',
       make: '',
       model: '',
+      desc: '',
       startDate: (new Date()).getTime(),
       endDate: (new Date()).getTime(),
     });
@@ -55,6 +57,12 @@ function App() {
             <Form.Control className='marginRight makeInput' placeholder="Make" value={car.make} onChange={(event) => handleChange(event, 'make', index)} />
             <Form.Control placeholder="Model" value={car.model} onChange={(event) => handleChange(event, 'model', index)} />
           </div>
+          <Form inline={true} className='descInputRow'>
+            <Form.Group controlId="formDesc" >
+              <Form.Label className='otherInfoLabel'>Other info:</Form.Label>
+              <Form.Control className='descInput' placeholder="color/transmission/fun fact/etc" value={car.desc} onChange={(event) => handleChange(event, 'desc', index)} />
+            </Form.Group>
+          </Form>
           <div className='datepickerRow'>
             <div>Buy Date: </div>
             <DatePicker
