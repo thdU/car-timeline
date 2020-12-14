@@ -9,7 +9,34 @@ const Timeline = (props) => {
   const carsCopy = JSON.parse(JSON.stringify(props.cars));
   carsCopy.sort((a, b) => (a.startDate - b.startDate));
 
+  const getChartEndtime = () => {
+    let chartEndtime;
+
+    for (const car of carsCopy) {
+      if (!chartEndtime || car.endDate > chartEndtime) {
+        chartEndtime = car.endDate;
+      }
+    }
+
+    if (!chartEndtime) {
+      chartEndtime = new Date().getTime();
+    }
+
+    return chartEndtime;
+  }
+
   const options = {
+    chart: {
+      animations: {
+        enabled: false,
+      },
+      toolbar: {
+        show: true,
+        tools: {
+          download: '<img src="./download_icon.png" class="ico-download" width="30">',
+        },
+      }
+    },
     title: {
       text: 'My Car History',
       align: 'center',
@@ -48,7 +75,7 @@ const Timeline = (props) => {
     },
     xaxis: {
       type: 'datetime',
-      max: new Date().getTime(),
+      max: getChartEndtime(),
       labels: {
         style: {
           fontSize: '14px',
