@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Timeline from './Timeline';
@@ -17,6 +17,19 @@ function App() {
     endDate: (new Date()).getTime(),
   }]);
 
+  useEffect(() => {
+    const item = localStorage.getItem('cars');
+    if (item) {
+      const savedCars = JSON.parse(item);
+      setCars(savedCars);
+    }
+  }, []);
+
+  const updateCars = (nextList) => {
+    localStorage.setItem('cars', JSON.stringify(nextList))
+    setCars(nextList);
+  }
+
   const handleAddInput = () => {
     const nextCars = JSON.parse(JSON.stringify(cars));
     nextCars.push({
@@ -27,25 +40,28 @@ function App() {
       startDate: (new Date()).getTime(),
       endDate: (new Date()).getTime(),
     });
-    setCars(nextCars);
+
+    updateCars(nextCars);
   }
 
   const handleDeleteInput = (index) => {
     const nextCars = JSON.parse(JSON.stringify(cars));
-    nextCars.splice(index, 1);
-    setCars(nextCars);
+    if (nextCars.length > 1) {
+      nextCars.splice(index, 1);
+      updateCars(nextCars);
+    }
   }
 
   const handleChange = (event, field, index) => {
     const nextCars = JSON.parse(JSON.stringify(cars));
     nextCars[index][field] = event.target.value;
-    setCars(nextCars);
+    updateCars(nextCars);
   }
 
   const handleDateChange = (value, field, index) => {
     const nextCars = JSON.parse(JSON.stringify(cars));
     nextCars[index][field] = value.getTime();
-    setCars(nextCars);
+    updateCars(nextCars);
   }
 
   const renderInputRows = () => {
