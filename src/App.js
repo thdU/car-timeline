@@ -74,7 +74,7 @@ function App() {
             <Form.Control className='modelInput' placeholder="Model" value={car.model} onChange={(event) => handleChange(event, 'model', index)} />
           </div>
           <Form inline={true} className='descInputRow'>
-            <Form.Group controlId="formDesc" >
+            <Form.Group controlId={`formDesc_${index}`} >
               <Form.Label className='otherInfoLabel'>Other info:</Form.Label>
               <Form.Control className='descInput' placeholder="color/transmission/fun fact/etc" value={car.desc} onChange={(event) => handleChange(event, 'desc', index)} />
             </Form.Group>
