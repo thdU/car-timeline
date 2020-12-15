@@ -122,12 +122,12 @@ const Timeline = (props) => {
 
 
   return (
-    <div id="chart">
+    <div className='chartWrapper'>
       <Chart
         options={options}
         series={series}
         type="rangeBar"
-        width={900}
+        width={'100%'}
       />
     </div>
   )

@@ -71,7 +71,7 @@ function App() {
           <div className='carModelRow'>
             <Form.Control className='marginRight yearInput' placeholder="Year" value={car.year} onChange={(event) => handleChange(event, 'year', index)} />
             <Form.Control className='marginRight makeInput' placeholder="Make" value={car.make} onChange={(event) => handleChange(event, 'make', index)} />
-            <Form.Control placeholder="Model" value={car.model} onChange={(event) => handleChange(event, 'model', index)} />
+            <Form.Control className='modelInput' placeholder="Model" value={car.model} onChange={(event) => handleChange(event, 'model', index)} />
           </div>
           <Form inline={true} className='descInputRow'>
             <Form.Group controlId="formDesc" >
@@ -108,7 +108,7 @@ function App() {
       <div className='header'>
         <div className='title'>Car Ownership Timeline</div>
       </div>
-      <div className='timelineWrapper'>
+      <div className='bodyWrapper'>
         <div className='inputSection'>
           {renderInputRows()}
           <Button className='addButton' onClick={handleAddInput}>Add</Button>
